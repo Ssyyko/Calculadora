@@ -160,7 +160,7 @@ public class CalculadoraApp extends JFrame {
         JButton button = new JButton(text);
         button.setFont(new Font("Segoe UI", Font.BOLD, 18));
         button.setBackground(color);
-        button.setForeground(determineButtonTextColor(text, color));
+        button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createLineBorder(new Color(13, 27, 42), 2));
         button.setPreferredSize(new Dimension(90, 68));
@@ -175,18 +175,6 @@ public class CalculadoraApp extends JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(6, 6, 6, 6);
         panel.add(button, gbc);
-    }
-
-    private Color determineButtonTextColor(String text, Color background) {
-        if (text.matches("[0-9.]") || text.equals("pi") || text.equals("+/-")) {
-            return Color.BLACK;
-        }
-        return chooseTextColor(background);
-    }
-
-    private Color chooseTextColor(Color background) {
-        int average = (background.getRed() + background.getGreen() + background.getBlue()) / 3;
-        return average < 150 ? new Color(248, 249, 250) : new Color(13, 27, 42);
     }
 
     private void appendText(String value) {
